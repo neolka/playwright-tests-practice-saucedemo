@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { Page, Locator } from '@playwright/test';
+import { getAuthData } from '../utils/utils.ts';
+
 
 export class LoginPage {
     constructor(private page: Page) {}
@@ -13,9 +15,11 @@ export class LoginPage {
       await this.page.goto('/');
     }
   
-    async login(username: string, password: string) {
-      await this.userInput.fill(username);
-      await this.passInput.fill(password);
+    async login() {
+      const authData = getAuthData();
+
+      await this.userInput.fill(authData.username);
+      await this.passInput.fill(authData.password);
       await this.loginBtn.click();
     }
   
