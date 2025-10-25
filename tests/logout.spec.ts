@@ -1,5 +1,5 @@
-import { test, expect } from '../fixtures/authFixture';
-import { InventoryPage } from '../pages/InventoryPage';
+import { test, expect } from '../fixtures/authFixture.ts';
+import { InventoryPage } from '../pages/InventoryPage.ts';
 
 test('user can logout successfully', async ({ loggedInPage }) => {
   const inventoryPage = new InventoryPage(loggedInPage);

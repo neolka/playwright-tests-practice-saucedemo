@@ -1,11 +1,17 @@
-import { Page, expect } from '@playwright/test';
+import { Page, expect, Locator } from '@playwright/test';
 
 export class InventoryPage {
   constructor(private page: Page) {}
 
+  products: Locator = this.page.locator('.inventory_item');
+
   async assertOnInventoryPage() {
     await expect(this.page).toHaveURL(/inventory.html/);
     await expect(this.page.locator('.inventory_list')).toBeVisible();
+  }
+
+  productAt(index: number) {
+    return this.products.nth(index);
   }
 
   async openBurgerMenu() {

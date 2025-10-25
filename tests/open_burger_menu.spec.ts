@@ -1,5 +1,5 @@
-import { InventoryPage } from '../pages/InventoryPage';
-import { test, expect } from '../fixtures/authFixture';
+import { InventoryPage } from '../pages/InventoryPage.ts';
+import { test, expect } from '../fixtures/authFixture.ts';
 
 test('Burger menu is visible', async ({ loggedInPage }) => {
   const inventoryPage = new InventoryPage(loggedInPage);
