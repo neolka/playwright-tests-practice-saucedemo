@@ -43,11 +43,19 @@ export class InventoryPage {
     await this.page.click('#react-burger-menu-btn');
   }
 
-  async addToCart(productName: string) {
-    await this.page.click(`text=${productName} >> xpath=../..//button`);
+  async addProductToCartByName(productName: string) {
+    const product = this.page.locator('.inventory_item').filter({
+    has: this.page.locator('.inventory_item_name', { hasText: productName })
+    });
+    const addButton = product.locator('button.btn_inventory');
+
+    await expect(addButton).toBeVisible();
+    await addButton.click();
+
+    await expect(addButton).toHaveText('Remove');
   }
 
-  async removeFromCart(productName: string) {
+  async removeProductFromCart(productName: string) {
     await this.page.click(`text=${productName} >> xpath=../..//button[contains(., 'Remove')]`);
   }
 
