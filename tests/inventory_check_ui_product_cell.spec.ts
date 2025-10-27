@@ -3,43 +3,43 @@ import { test, expect} from '../fixtures/authFixture.ts';
 
 
 test.describe('Inventory page tests', () => { 
-  
-  test('Check UI of product cell', async ({ loggedInPage }) => {
-    const inventoryPage = new InventoryPage(loggedInPage);
 
+  let inventoryPage: InventoryPage;
+
+  test.beforeEach(async ({ loggedInPage }) => {
+    inventoryPage = new InventoryPage(loggedInPage);
     await inventoryPage.assertOnInventoryPage();
+  });
+
+  test.afterEach(async () => {
+    try {
+      await inventoryPage.resetAppState();
+    } catch (e) { 
+      console.warn('⚠️ Failed to reset app state:', e);
+    }
+  });
+  
+  test('Check UI of product cell', async () => {
     await inventoryPage.verifyAllProductsHaveRequiredElements();
-    //console.log("badge count is " + inventoryPage.getCartBadgeCount());
-  
   });
   
-  test('Add product to cart', async ({ loggedInPage }) => {
-    const inventoryPage = new InventoryPage(loggedInPage);
-  
-    await inventoryPage.assertOnInventoryPage();
+  test('Add product to cart', async () => {
+    await test.step('Verify initial cart state', async () => {
+      const count = await inventoryPage.getCartBadgeCount();
+      expect(count).toBe(0);
+    });
 
-    const initialCount = await inventoryPage.getCartBadgeCount();
-    console.log('🟢 Initial cart badge count:', initialCount);
+    await test.step('Add product and verify badge update', async () => {
+      await inventoryPage.addProductToCartByName('Sauce Labs Backpack');
+      expect(await inventoryPage.getCartBadgeCount()).toBe(1);
+    });
+  });
+
+  test('Remove product from cart', async () => {
     await inventoryPage.addProductToCartByName('Sauce Labs Backpack');
+    await inventoryPage.removeProductFromCartByName('Sauce Labs Backpack');
 
-    const afterAddCount = await inventoryPage.getCartBadgeCount();
-    console.log('🟡 Cart badge count after adding:', afterAddCount);
-
-    expect(await inventoryPage.getCartBadgeCount()).toBe(1);
-    await inventoryPage.resetAppState();
-  
+    expect(await inventoryPage.getCartBadgeCount()).toBe(0);
   });
-
-  // test('Remove product from cart', async ({ loggedInPage }) => {
-  //   const inventoryPage = new InventoryPage(loggedInPage);
-  //   await inventoryPage.assertOnInventoryPage();
-
-  //   await inventoryPage.addProductToCartByName('Sauce Labs Backpack');
-  //   await inventoryPage.removeProductFromCartByName('Sauce Labs Backpack');
-
-  //   const cartBadge = loggedInPage.locator('.shopping_cart_badge');
-  //   await expect(cartBadge).not.toBeVisible();
-  // });
-
 
 });

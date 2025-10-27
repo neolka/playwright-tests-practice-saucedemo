@@ -65,7 +65,6 @@ export class InventoryPage {
     await removeButton.click();
 
     await expect(removeButton).toHaveText('Add to cart');
-
   }
 
   async getCartBadgeCount() {
