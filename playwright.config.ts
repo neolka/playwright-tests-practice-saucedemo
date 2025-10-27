@@ -31,4 +31,9 @@ export default defineConfig({
     //   use: { ...devices['Desktop Safari'] },
     // },
   ],
+  reporter: [
+    ['list'], // console output
+    ['json', { outputFile: 'test-results/results.json' }], // JSON report
+    ['html', { outputFolder: 'playwright-report', open: 'never' }], // HTML report
+  ],
 });
