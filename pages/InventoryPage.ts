@@ -55,8 +55,17 @@ export class InventoryPage {
     await expect(addButton).toHaveText('Remove');
   }
 
-  async removeProductFromCart(productName: string) {
-    await this.page.click(`text=${productName} >> xpath=../..//button[contains(., 'Remove')]`);
+  async removeProductFromCartByName(productName: string) {
+    const product = this.page.locator('.inventory_item').filter({
+    has: this.page.locator('.inventory_item_name', { hasText: productName })
+    });
+    const removeButton = product.locator('button.btn_inventory');
+
+    await expect(removeButton).toHaveText('Remove');
+    await removeButton.click();
+
+    await expect(removeButton).toHaveText('Add to cart');
+
   }
 
   async getCartBadgeCount() {
@@ -66,6 +75,12 @@ export class InventoryPage {
     }
     return 0;
   }
+
+  async resetAppState() {
+  await this.page.locator('#react-burger-menu-btn').click();
+  await this.page.locator('#reset_sidebar_link').click();
+  await this.page.locator('#react-burger-cross-btn').click();
+}
 
   async logout() {
     await this.page.click('#react-burger-menu-btn');
