@@ -28,6 +28,10 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Create login-data.json from secrets
+        run: |
+          echo "{ \"username\": \"${{ secrets.TEST_USER }}\", \"password\": \"${{ secrets.TEST_PASS }}\" }" > login-data.json
+
       - name: Run tests
         run: npx playwright test
 
