@@ -6,7 +6,7 @@ export function getAuthData(){
   const jsonData = JSON.parse(rawData.toString());
 
   return {
-    username: jsonData.users.standardValidUser.username as string,
-    password: jsonData.users.standardValidUser.password as string,
+    username: "TEST_USER",
+    password: "TEST_PASS",
   };
 }
