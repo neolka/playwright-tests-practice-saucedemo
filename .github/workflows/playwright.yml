@@ -34,6 +34,9 @@ jobs:
 
       - name: Run tests
         run: npx playwright test
+        env:
+          TEST_USER: ${{ secrets.TEST_USER }}
+          TEST_PASS: ${{ secrets.TEST_PASS }}
 
       - name: Upload Playwright HTML report
         if: always()

@@ -93,12 +93,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2328,
+                      "duration": 2256,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-27T20:21:41.436Z",
+                      "startTime": "2025-10-28T18:55:14.884Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -127,7 +127,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1700,
+                      "duration": 1635,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
@@ -135,14 +135,14 @@
                       "steps": [
                         {
                           "title": "Verify initial cart state",
-                          "duration": 1
+                          "duration": 2
                         },
                         {
                           "title": "Add product and verify badge update",
-                          "duration": 42
+                          "duration": 44
                         }
                       ],
-                      "startTime": "2025-10-27T20:21:44.027Z",
+                      "startTime": "2025-10-28T18:55:17.426Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -171,12 +171,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1824,
+                      "duration": 1697,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-27T20:21:45.734Z",
+                      "startTime": "2025-10-28T18:55:19.067Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -222,12 +222,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1226,
+                      "duration": 1203,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-27T20:21:41.434Z",
+                      "startTime": "2025-10-28T18:55:14.878Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -256,12 +256,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 629,
+                      "duration": 588,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-27T20:21:42.926Z",
+                      "startTime": "2025-10-28T18:55:16.378Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -300,12 +300,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 2145,
+                  "duration": 2133,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-27T20:21:41.446Z",
+                  "startTime": "2025-10-28T18:55:14.881Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -342,12 +342,12 @@
                   "workerIndex": 3,
                   "parallelIndex": 3,
                   "status": "passed",
-                  "duration": 1241,
+                  "duration": 1213,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-27T20:21:41.436Z",
+                  "startTime": "2025-10-28T18:55:14.878Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -384,12 +384,12 @@
                   "workerIndex": 3,
                   "parallelIndex": 3,
                   "status": "passed",
-                  "duration": 900,
+                  "duration": 613,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-27T20:21:42.944Z",
+                  "startTime": "2025-10-28T18:55:16.395Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -407,8 +407,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-27T20:21:41.133Z",
-    "duration": 6449.782999999999,
+    "startTime": "2025-10-28T18:55:14.561Z",
+    "duration": 6230.3949999999995,
     "expected": 8,
     "skipped": 0,
     "unexpected": 0,
