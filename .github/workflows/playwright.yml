@@ -1,0 +1,53 @@
+name: Playwright tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Playwright tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Create login-data.json from secrets
+        run: |
+          echo "{ \"username\": \"${{ secrets.TEST_USER }}\", \"password\": \"${{ secrets.TEST_PASS }}\" }" > login-data.json
+
+      - name: Run tests
+        run: npx playwright test
+        env:
+          TEST_USER: ${{ secrets.TEST_USER }}
+          TEST_PASS: ${{ secrets.TEST_PASS }}
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report
+
+      - name: Upload JSON test-results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-json-results
+          path: test-results/results.json
